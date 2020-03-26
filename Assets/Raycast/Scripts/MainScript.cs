@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class MainScript : MonoBehaviour
 {
-
-    private void FixedUpdate()
+    private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(transform.position, ray.direction * 10);
-        RaycastHit hit;
+        Ray RayFromCamera = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(transform.position, RayFromCamera.direction * 10);
+        RaycastHit Rayhit;
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(RayFromCamera, out Rayhit))
             {
                 Debug.Log("Убит!");
-                hit.collider.gameObject.SetActive(false);
+                Rayhit.collider.gameObject.SetActive(false);
             }
         }
     }

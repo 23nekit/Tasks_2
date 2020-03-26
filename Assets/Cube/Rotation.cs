@@ -5,25 +5,27 @@ using UnityEngine.UI;
 
 public class Rotation : MonoBehaviour
 {
-    public Text textForSeconds;
+    public Text TextForSeconds;
+    public Vector3 RotationAxis = Vector3.up;
+    public float RotationAngle = FullRotateAngle / FixedUpdatesPerSecond;
 
-    private float RotationAngle = FullRotateAngle / FixedUpdatesPerSecond;
     private static float FullRotateAngle = 360;
     private static float FixedUpdatesPerSecond = 50;
     private Quaternion qt;
 
-    void Start()
+    private void Start()
     {
-        qt = Quaternion.AngleAxis(RotationAngle, Vector3.up);
+        qt = Quaternion.AngleAxis(RotationAngle, RotationAxis);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         transform.rotation *= qt;
         TextUpdate();
     }
+
     private void TextUpdate()
     {
-        textForSeconds.text = "Time from start: " + (int)Time.time;
+        TextForSeconds.text = "Time from start: " + (int)Time.time;
     }
 }

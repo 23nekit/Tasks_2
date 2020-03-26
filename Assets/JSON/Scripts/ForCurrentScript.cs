@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class ForCurrentScript : MonoBehaviour
 {
-    public int Number;
     public Text current;
-    void Update()
+
+    public void WriteCurrentInTextFromJson()
     {
         try
         {
             string json = File.ReadAllText(Application.dataPath + "Number.json");
             NumberForJson number=JsonUtility.FromJson<NumberForJson>(json);
-            current.text = "Current Number:" + number.Curent;
+            current.text = "Current Number:" + number.Current;
         }
         catch(System.Exception e)
         {
-
+            Debug.Log(e.Message);
         }
     }
 }

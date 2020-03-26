@@ -6,5 +6,5 @@ using UnityEngine.UI;
 
 public class NumberForJson
 {
-    public int Curent;
+    public int Current;
 }

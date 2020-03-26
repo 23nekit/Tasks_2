@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StandartEvents : MonoBehaviour
 {
-    public event Action StandartEvent = delegate { };
-    public void PressButton()
+    public static EventsCreate ForStandartEvent = new EventsCreate();
+
+    public void PlusOnButton()
     {
-        StandartEvent += WriteToConsoleHello;//подписаться на событие
-        StandartEvent.Invoke();
-        StandartEvent -= WriteToConsoleHello;//отписаться от события
+        ForStandartEvent.StandartEvent += WriteHello;
     }
-    public void PressButton2()
+
+    public void MinusOnButton()
     {
-        StandartEvent += WriteToConsoleHello;
-        StandartEvent.Invoke();
-        StandartEvent += WriteToConsoleHello;
-        StandartEvent.Invoke();
+        ForStandartEvent.StandartEvent -= WriteHello;
     }
-    void WriteToConsoleHello()
+
+    public void WriteHello()
     {
         Debug.Log("Hello");
     }

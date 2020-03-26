@@ -6,21 +6,21 @@ using UnityEngine.UI;
 
 public class MainScriptForUE : MonoBehaviour
 {
-    public UnityEvent boxChange;
-    public Text text;
+    public UnityEvent BoxChange;
+    public Text TextBox;
 
-    private int counter = 3;
+    private int Counter = 3;
     
-    void FixedUpdate()
+    void Update()
     {
-        if (counter - (int)Time.fixedTime > 0)
+        if (Counter - (int)Time.fixedTime > 0)
         {
-            text.text = (counter - (int)Time.fixedTime).ToString();
+            TextBox.text = (Counter - (int)Time.fixedTime).ToString();
         }
         else
         {
-            text.text = "GO!";
-            boxChange.Invoke();
+            TextBox.text = "GO!";
+            BoxChange.Invoke();
         }
     }
 }

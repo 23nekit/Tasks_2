@@ -16,6 +16,7 @@ public class DeleteButtonScript : MonoBehaviour
             EditorUtility.DisplayDialog("Error", "You don`t have nickname", "OK");
         }
     }
+
     private void AnswerForDeleteAndDoItWhenSure()
     {
         if(EditorUtility.DisplayDialog("Question", "Are You Sure", "Yes", "No"))

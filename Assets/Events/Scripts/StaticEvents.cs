@@ -5,21 +5,17 @@ using UnityEngine;
 
 public class StaticEvents : MonoBehaviour
 {
-    public static event Action StaticEvent = delegate { };
-    public void PressButton()
+    public void PressButtonAdd()
     {
-        StaticEvent += WriteToConsoleHi;//подписаться на событие
-        StaticEvent.Invoke();
-        StaticEvent -= WriteToConsoleHi;//отписаться от события
+        EventsCreate.StaticEvent += WriteToConsoleHi;//подписаться на событие
     }
-    public void PressButton2()
+
+    public void PressButtonRemove()
     {
-        StaticEvent += WriteToConsoleHi;
-        StaticEvent.Invoke();
-        StaticEvent += WriteToConsoleHi;
-        StaticEvent.Invoke();
+        EventsCreate.StaticEvent -= WriteToConsoleHi;//отписаться от события
     }
-    void WriteToConsoleHi()
+
+    private void WriteToConsoleHi()
     {
         Debug.Log("Hi");
     }

@@ -6,7 +6,7 @@ using UnityEditor;
 
 public class SaveButtonScript : MonoBehaviour
 {
-    public InputField input;
+    public InputField InputBox;
 
     public void SaveNicknameInPlayerPrefs()
     {
@@ -22,12 +22,14 @@ public class SaveButtonScript : MonoBehaviour
             SetNickname();
         }
     }
+
     private bool isReplaceNickname()
     {
         return EditorUtility.DisplayDialog("Question", "Replace Nickname ?", "Yes", "No");
     }
+
     private void SetNickname()
     {
-        PlayerPrefs.SetString("Nickname", input.text);
+        PlayerPrefs.SetString("Nickname", InputBox.text);
     }
 }

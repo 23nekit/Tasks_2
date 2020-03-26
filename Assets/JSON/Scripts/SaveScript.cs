@@ -5,14 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SaveScript : MonoBehaviour
 {
-    public Text Current;
-    public InputField input;
+    public InputField InputBox;
 
     public void SaveScriptInJSON()
     {
-        NumberForJson pl = new NumberForJson();
-        pl.Curent = int.Parse(input.text);
-        string json = JsonUtility.ToJson(pl);
+        NumberForJson number = new NumberForJson();
+        number.Current = int.Parse(InputBox.text);
+        string json = JsonUtility.ToJson(number);
         File.WriteAllText(Application.dataPath + "Number.json", json);
         
     }

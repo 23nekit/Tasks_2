@@ -1,32 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RotationWithEuler : MonoBehaviour
 {
-    public float RPM = 0;
-    private int CounterForFixedUpdates = 0;
+    public Text TextForSeconds;
+    public Vector3 RotationAxis = Vector3.up;
+
     private static float FullRotateAngle = 360;
-    private static float FixedUpdatesPerSecond = 50;
-    // Start is called before the first frame update
-    void Start()
+    
+    private void Update()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-    private void FixedUpdate()
-    {
-        transform.Rotate(Vector3.up, FullRotateAngle / FixedUpdatesPerSecond);
-        Debug.Log(RPM);
-        CounterForFixedUpdates += 1;
-        if (CounterForFixedUpdates == FixedUpdatesPerSecond)
-        {
-            RPM += 1;
-            CounterForFixedUpdates = 0;
-        }
+        transform.Rotate(RotationAxis, FullRotateAngle*Time.deltaTime);
+        TextForSeconds.text = "Time from start: " + (int)Time.time;
     }
 }
